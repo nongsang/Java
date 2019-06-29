@@ -6,7 +6,8 @@ class Hard_Disk_Drive   // 하드디스크 클래스
     {
         Platter() {}    // 생성자 정의 가능
 
-        int saveData;   // 필드 정의 가능
+        private int saveData;   // 필드 정의 가능
+                                // 접근제어자 선언 가능
 
         static int page;    // static 필드 불가능
 
@@ -33,5 +34,6 @@ public class Instance_Member_Class
 
         platter.Spin();         // 플래터가 돌면서
         platter.saveData = 30;  // 플래터에 데이터가 저장된다.
+                                // 하지만 private이므로 직접접근 불가능
     }
 }
