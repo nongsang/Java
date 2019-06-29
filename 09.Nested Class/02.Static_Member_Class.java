@@ -1,23 +1,32 @@
 package Java;
 
-class Hard_Disk_Drive   // 하드디스크 클래스
+class A
 {
-    static class Platter       // 정적 멤버 클래스로 플래터 정의
+    A()     // A 생성자
     {
-        Platter() {}
+        System.out.println("A 생성");
+    }
 
-        private int saveData;
-
-        static int page;        // static 필드 정의 가능
-
-        void Spin()
+    static class C     // 정적 멤버 클래스
+    {
+        C()     // C 생성자
         {
-            System.out.println("돈다");
+            System.out.println("C 생성");
         }
 
-        static void Save()      // static 메서드 정의 가능
+        int field1; // 인스턴스 필드 정의 가능
+                    // 접근제어자도 선언 가능
+
+        static int field2;  // static 필드 정의 가능
+
+        void Method1()      // 메서드 정의 가능
         {
-            System.out.println("저장한다.");
+            System.out.println("Method1() 호출");
+        }
+
+        static void Method2()   // static 메서드 정의 가능
+        {
+            System.out.println("Method2() 호출");
         }
     }
 }
@@ -26,16 +35,14 @@ public class Static_Member_Class
 {
     public static void main(String[] args)
     {
-        Hard_Disk_Drive HDD = new Hard_Disk_Drive();    // 하드디스크 생성할 수 있지만
+        A.C c = new A.C();  // A가 생성되지 않았어도 C를 생성할 수 있다.
 
-        Hard_Disk_Drive.Platter platter = new Hard_Disk_Drive.Platter();    // 바로 멤버 클래스를 생성해도 된다.
+        c.field1 = 3;   // C 인스턴스 필드 접근
+        c.Method1();    // C 인스턴스 메서드 호출
+        c.field2 = 4;   // C 정적 필드 접근 가능
+        c.Method2();    // C 정적 메서드 호출 가능
 
-        platter.Spin();     // 인스턴스화를 했으므로 호출 가능
-        platter.Save();
-        platter.saveData = 30;  // 인스턴스화를 했으므로 호출 가능하지만 private라 접근 불가
-        platter.page = 3;
-
-        Hard_Disk_Drive.Platter.Save();     // static 메서드이므로 인스턴스화 안해도 호출 가능
-        Hard_Disk_Drive.Platter.page = 4;   // static 필드이므로 인스턴스화 안해도 호출 가능
+        A.C.field2 = 5; // 정적 필드이므로 인스턴스화를 하지 않고 접근 가능
+        A.C.Method2();  // 정적 메서드이므로 인스턴스화를 하지 않고 호출 가능
     }
 }
