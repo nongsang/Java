@@ -2,20 +2,39 @@ package Java;
 
 class A
 {
+    A()     // A 생성자
+    {
+        System.out.println("A 생성");
+    }
+
     void Method()
     {
-        class B
+        class D     // 로컬 클래스
         {
-            B(){}   // 생성자
+            D()     // D 생성자
+            {
+                System.out.println("D 생성");
+            }
+
             int field1; // 인스턴스 필드 정의 가능
-            //static int field2;  // static 필드 정의 불가
-            void Method1(){}    // 메서드 정의 가능
-            //static void Method2(){} // static 메서드 정의 불가능
+                        // 접근제어자도 선언 가능
+
+            static int field2;  // static 필드 정의 불가능
+
+            void Method1()      // 메서드 정의 가능
+            {
+                System.out.println("Method1() 호출");
+            }
+
+            static void Method2()   // static 메서드 정의 불가능
+            {
+                System.out.println("Method2() 호출");
+            }
         }
 
-        B b = new B();  // 메서드 내에서 정의한 클래스를 생성
-        b.field1 = 10;  // 필드 접근 가능
-        b.Method1();    // 메서드 호출 가능
+        D d = new D();  // A 메서드 내에 정의한 D 클래스를 생성
+        d.field1 = 3;   // D 필드 접근
+        d.Method1();    // D 메서드 호출
     }
 }
 
@@ -25,6 +44,6 @@ public class Local_Class
     {
         A a = new A();
 
-        a.Method();     // A의 메서드를 호출하면 B를 생성하고 작업한 후 B 클래스 삭제
+        a.Method(); // 메서드를 호출하면 D 생성
     }
 }
