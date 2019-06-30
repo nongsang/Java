@@ -33,7 +33,7 @@ interface RemoteController
     }
 }
 
-public class Anonymous_Class
+public class Anonymous_Instance
 {
     public static void main(String[] args)
     {
