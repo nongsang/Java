@@ -23,12 +23,13 @@ class Outter
     }
 
     // 자바 8 이후
-    void Method1(int param) // 메서드의 파라미터가 final이 붙지 않아도 로컬 클래스에서 사용할 수 있다.
+    void Method2(int param) // 메서드의 파라미터가 final이 붙지 않아도 로컬 클래스에서 사용할 수 있다.
     {                       // 자바 7의 코딩 스타일처럼 final을 붙여도 된다.
         int local = 100;    // 자동으로 final이 붙기 때문
+                            // local은 생성되면서 100으로 고정된다.
 
-        param = 200;    // final이므로
-        local = 300;    // 중간에 수정 불가능
+        param = 200;    // 수정은 가능하지만
+        local = 300;    // 사용하지 못한다.
 
         class Inner     // 로컬 클래스
         {
@@ -37,24 +38,8 @@ class Outter
 
             void Method()
             {
-                int result = param + local;
-            }
-        }
-    }
-
-    // 자바 11 이후?
-    void Method2(int param)
-    {
-        int local = 100;
-
-        param = 200;    // 파라미터의 final이 붙지 않았으므로 수정 가능
-        local = 300;    // local도 final이 붙지 않았으므로 수정 가능
-
-        class Inner     // 멤버 클래스
-        {
-            void Method()
-            {
-                int result = param + local; // final이 붙지 않으면 멤버 클래스 내에서 사용할 수 없다.
+                int result = param + local; // 중간에 수정하는 작업이 있으므로 사용 불가능
+                                            // 사용하려면 수정하는 작업을 없애면 된다.
             }
         }
     }
