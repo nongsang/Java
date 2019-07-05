@@ -7,6 +7,7 @@ public class TreeSet_Collection
     public static void main(String[] args)
     {
         TreeSet<String> set = new TreeSet<>();  // Set<> 계열 컬렉션 중 하나인 HashSet이다.
+                                                // Binaray Tree 기반의 Set 컬렉션이다.
                                                 // Tree구조는 탐색에 특화되어 있다.
                                                 // 삽입, 삭제를 할 때 마다 정렬하므로 잦은 삽입, 삭제가 발생하면 성능저하가 발생한다.
 
@@ -49,14 +50,19 @@ public class TreeSet_Collection
         Iterator<String> iter = set.iterator(); // set의 원소들을 가리키는 반복자 생성
         while(iter.hasNext())   // 반복자가 다음값을 가리킬 수 있다면
         {
-            String lang = iter.next();      // 컨테이너 제일 작은 값을 반환만 한다.
+            String lang = iter.next();      // 컨테이너 제일 작은 값부터 반환한다.
             System.out.println(lang + " 남은 데이터 : " + set.size());
+        }
+
+        for(var elem : set)     // 그냥 범위기반 for문을 사용하면 쉽게 출력할 수 있다.
+        {
+            System.out.println(elem + " 남은 데이터 : " + set.size());
         }
 
         NavigableSet<String> decSet = set.descendingSet();  // set을 내림차순으로 저장한다.
                                                             // 반환형은 NavigableSet<>이므로 주의
         System.out.println(decSet);
-        NavigableSet<String> aseSet = decSet.descendingSet();   // 내림차순이었던 컨테이너를 다시 반대로 하여 오름차순으로 바꾼다.
+        NavigableSet<String> aseSet = decSet.descendingSet();   // 내림차순이었던 컨테이너를 다시 반대로 하여 오름차순으로 바꿔서 저장한다.
         System.out.println(aseSet);
 
         // C로 시작하는 단어부터 L로 시작하는 단어 전까지 모두 찾는다.
