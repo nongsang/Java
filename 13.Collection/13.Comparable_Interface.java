@@ -25,6 +25,8 @@ class Language implements Comparable<Language>
 		if(number < lang.number) return -1;			// 비교했을 때 작으면 -1
 		else if (number == lang.number) return 0;	// 같으면 0
 		else return 1;								// 크면 1을 반환한다.
+
+		//return Integer.compare(number, lang.number);	// 간단하게 compare()를 사용해도 좋다.
 	}
 }
 
