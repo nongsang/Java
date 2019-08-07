@@ -2,7 +2,7 @@ package Java;
 
 import java.io.*;   // 자바의 기본적인 데이터 입출력 API 제공
 
-public class InputStream_In
+public class System_In
 {
     public static void main(String[] args) throws Exception // 입출력을 위해서 예외처리를 해줘야 한다.
     {
